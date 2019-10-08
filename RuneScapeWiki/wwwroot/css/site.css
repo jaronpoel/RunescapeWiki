@@ -1,0 +1,250 @@
+﻿/* Display none*/
+
+.containerPassword {
+    display: none;
+}
+
+/* White */
+
+.White {
+    color: white;
+}
+
+/* Voor de tekst opmaak*/
+
+.ContainerContent {
+    margin: 0px 30px 0 26%;
+    position: relative;
+}
+
+.BackgroundTekst {
+    background-color: #dbcba3;
+}
+
+.BackdropTop {
+    background-image: url(../images/BackdropTop.gifc) !important;
+    background-size: cover;
+    height: 50px;
+    left: 0;
+    position: absolute;
+    top: -20px;
+    width: 102%;
+}
+
+.BackdropBot {
+    background-image: url("../images/BackdropBottom.gif") !important;
+    background-size: cover;
+    height: 50px;
+    position: absolute;
+    width: 102%;
+    margin-top: -11px;
+}
+
+.Backdrop {
+    background-size: contain !important;
+    background-image: url(../images/Backdrop.gif) !important;
+    padding: 25px 16px;
+    height: 600px;
+    margin-top: 2%;
+    background-color: #dbcba3;
+    width: 95%;
+    margin-left: 2%;
+}
+
+/*MENU*/
+body {
+    margin: 0;
+}
+
+.Menu {
+    margin: 0;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 25%;
+    background-color: #dbcba3;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    margin-top: -2%;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+    li a.active {
+        background-color: #261f13;
+        color: white;
+    }
+
+    li a:hover:not(.active) {
+        background-color: #5a4a2d;
+        color: white;
+    }
+
+/*HOME*/
+
+.Background {
+    background-size: cover;
+    background-image: url("../images/Background.jpg");
+}
+
+.Inlog {
+    width: 51% !important;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Input fields */
+input[type=password] {
+    width: 51%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #261f13;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    cursor: pointer;
+    width: 51%;
+}
+
+    button:hover {
+        opacity: 0.8;
+    }
+
+
+/* Center the image */
+.imgcontainer, .containerInlog {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+}
+
+img.avatar {
+    width: 15%;
+    border-radius: 50%;
+}
+
+.containerInlog, .containerPassword {
+    padding: 16px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    margin: 2% auto 2% auto;
+    width: 80%;
+}
+
+/* Account */
+
+.NewAccount, .NewStats {
+    margin-top: 10px;
+    background-color: #261f13;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    width: 12%;
+}
+
+/* New Account */
+
+.CreateAccount {
+    background-color: #261f13;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    width: 12%;
+}
+
+/* New Stats */
+
+input {
+    width: 32%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.CreateStats {
+    background-color: #261f13;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    width: 32%;
+}
+/* Monster */
+.LeftMonster {
+    float: left;
+    width: 45%;
+}
+
+.LeftMonster {
+    margin: auto;
+}
+
+.LeftMonsterText {
+    margin: auto;
+}
+
+.RightMonster {
+    margin-left: 50%;
+}
+
+.monsterImg {
+    width: 50%;
+}
+
+.DropsText {
+    width: 32%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* List*/
+
+.LeftList {
+    float: left;
+    width: 45%;
+}
+
+.LeftList {
+    margin-top: -2.5%;
+}
+
+.LeftListText {
+    margin: auto;
+}
+
+.NewMonster {
+    margin-top: 10px;
+    background-color: #261f13;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    position: absolute;
+    right: 15px;
+    bottom: 10px;
+    width: 25%;
+}

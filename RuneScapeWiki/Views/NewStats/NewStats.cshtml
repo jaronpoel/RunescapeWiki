@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "NewStat";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RunescapeWiki</title>
+</head>
+<body class="BackgroundTekst">
+    <ul>
+        <h1 class="Menu">
+            <li><a @Html.ActionLink("List", "List", "List")</a></li>
+            <li><a @Html.ActionLink("Account", "Account", "Account")</a></li>
+            <li><a class="active" @Html.ActionLink("Stats", "Stats", "Stats")</a></li>
+            <li><a @Html.ActionLink("Monster", "Monster", "Monster")</a></li>
+        </h1>
+    </ul>
+    <div class="ContainerContent">
+        <div class="BackdropTop"></div>
+        <div class="Backdrop">
+            <h1>Stat Input</h1>
+            <div class="StatsInput">
+                <form>
+                    <input type="text" name="Agilty" placeholder="Agilty">
+                    <input type="text" name="Construction" placeholder="Construction">
+                    <input type="text" name="Attack" placeholder="Attack">
+                    <input type="text" name="Cooking" placeholder="Cooking">
+                    <input type="text" name="Crafting" placeholder="Crafting">
+                    <input type="text" name="Farming" placeholder="Farming">
+                    <input type="text" name="Farming" placeholder="Farming">
+                    <input type="text" name="Firemaking" placeholder="Firemaking">
+                    <input type="text" name="Fishing" placeholder="Fishing">
+                    <input type="text" name="Flechting" placeholder="Flechting">
+                    <input type="text" name="Herblore" placeholder="Herblore">
+                    <input type="text" name="Hitpoints" placeholder="Hitpoints">
+                    <input type="text" name="Hunter" placeholder="Hunter">
+                    <input type="text" name="Magic" placeholder="Magic">
+                    <input type="text" name="Mining" placeholder="Mining">
+                    <input type="text" name="Prayer" placeholder="Prayer">
+                    <input type="text" name="Ranged" placeholder="Ranged">
+                    <input type="text" name="Runecrafting" placeholder="Runecrafting">
+                    <input type="text" name="Slayer" placeholder="Slayer">
+                    <input type="text" name="Smithing" placeholder="Smithing">
+                    <input type="text" name="Strenght" placeholder="Strenght">
+                    <input type="text" name="Thieving" placeholder="Thieving">
+                    <input type="text" name="Woodcutting" placeholder="Woodcutting">
+                    <button class="CreateStats" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div class="BackdropBot"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "NewAccount";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RunescapeWiki</title>
+</head>
+<body class="BackgroundTekst">
+    <ul>
+        <h1 class="Menu">
+            <li><a @Html.ActionLink("List", "List", "List")</a></li>
+            <li><a class="active" @Html.ActionLink("Account", "Account", "Account")</a></li>
+            <li><a @Html.ActionLink("Stats", "Stats", "Stats")</a></li>
+            <li><a @Html.ActionLink("Monster", "Monster", "Monster")</a></li>
+        </h1>
+    </ul>
+    <div class="ContainerContent">
+        <div class="BackdropTop"></div>
+        <div class="Backdrop">
+            <h1>New Acccount</h1>
+            <form action="@Url.Action("ToAccount", "NewAccount")">
+                E-Mail:<br>
+                <input type="text" name="E-Mail"><br>
+                Username:<br>
+                <input type="text" name="Username"><br>
+                Password:<br>
+                <input type="text" name="Password"><br>
+                <button class="CreateAccount" type="submit">Create</button>
+            </form>
+        </div>
+        <div class="BackdropBot"></div>
+    </div>
+</body>
+</html>

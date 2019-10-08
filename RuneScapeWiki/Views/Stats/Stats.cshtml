@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Stat";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RunescapeWiki</title>
+</head>
+<body class="BackgroundTekst">
+    <ul>
+        <h1 class="Menu">
+            <li><a @Html.ActionLink("List", "List", "List")</a></li>
+            <li><a @Html.ActionLink("Account", "Account", "Account")</a></li>
+            <li><a class="active" @Html.ActionLink("Stats", "Stats", "Stats")</a></li>
+            <li><a @Html.ActionLink("Monster", "Monster", "Monster")</a></li>
+        </h1>
+    </ul>
+    <div class="ContainerContent">
+        <div class="BackdropTop"></div>
+        <div class="Backdrop">
+            <h1>Stats</h1>
+        </div>
+        <div class="BackdropBot"></div>
+    </div>
+</body>
+</html>

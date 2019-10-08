@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "NewMonster";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RunescapeWiki</title>
+</head>
+<body class="BackgroundTekst">
+    <ul>
+        <h1 class="Menu">
+            <li><a @Html.ActionLink("List", "List", "List")</a></li>
+            <li><a @Html.ActionLink("Account", "Account", "Account")</a></li>
+            <li><a @Html.ActionLink("Stats", "Stats", "Stats")</a></li>
+            <li><a class="active" @Html.ActionLink("Monster", "Monster", "Monster")</a></li>
+        </h1>
+    </ul>
+    <div class="ContainerContent">
+        <div class="BackdropTop"></div>
+        <div class="Backdrop">
+            <h1>New Monster</h1>
+            <form action="@Url.Action("ToList", "NewMonster")" id="FormMonster">
+                Monsters Name:<br>
+                <input type="text" name="Name"><br>
+                Requirements<br>
+                <input type="text" name="Requirements"><br>
+                Drops:<br>
+                <textarea class="DropsText" rows="5" cols="50" name="Drops" form="FormMonster"></textarea><br>
+                <button class="CreateAccount" type="submit">Create</button>
+            </form>
+        </div>
+        <div class="BackdropBot"></div>
+    </div>
+</body>
+</html>
