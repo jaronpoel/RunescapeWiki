@@ -10,13 +10,13 @@
 </head>
 <body class="Background">
     <div>
-        <form class="modal-content" action="@Url.Action("ToList", "Home")">
+        <form class="modal-content" asp-action="UserLogin" asp-controller="Home">
             <div class="imgcontainer">
                 <img src="../images/Logo.png" alt="Avatar" class="avatar">
             </div>
             <div class="containerInlog">
-                <input class="Inlog" type="text" placeholder="Enter Username" name="uname" required>
-                <input class="Inlog" type="password" placeholder="Enter Password" name="psw" required>
+                <input class="Inlog" type="text" placeholder="Enter Username" name="Username" required>
+                <input class="Inlog" type="password" placeholder="Enter Password" name="Password" required>
                 <p>Registeren</p>
                 <button type="submit">Login</button>
             </div>
