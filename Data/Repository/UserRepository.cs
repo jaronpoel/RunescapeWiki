@@ -1,25 +1,22 @@
 ﻿using Models;
 using System;
-using System.Data.SqlClient;
+using Interfaces.Contexts;
+using Interfaces.Repositories;
 
-namespace Data
+namespace Data.Repositories
 {
-    public class UserRepository
+    public class UserRepository : IUserRepository
     {
+        private readonly IUserContext Context;
 
-        public void AuthenticatorUser(User user)
+        public UserRepository(IUserContext context)
         {
-            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Jaron\Documents\Visual Studio 2017\Projects\RunescapeWiki\Data\Runescape.mdf;Integrated Security=True");
-            SqlCommand command = new SqlCommand($"execute AuthenticateUser '{user.Username}', '{user.Password}'", conn);
+            Context = context;
+        }
 
-            conn.Open();
-            int result = (int)command.ExecuteScalar();
-            conn.Close();
-
-            if(result != 1)
-            {
-                throw new Exception();
-            }
+        public void AuthenticateUser(string Username, string Password)
+        {
+            Context.AuthenticatUser(Username, Password);
         }
     }
 }

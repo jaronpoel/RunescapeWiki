@@ -7,12 +7,20 @@ using Microsoft.AspNetCore.Mvc;
 using RuneScapeWiki.Models;
 using Data;
 using Models;
+using Interfaces.Contexts;
+using Interfaces.Logic;
 
 namespace RuneScapeWiki.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly UserRepository userrepo = new UserRepository();
+        private readonly IUserLogic UserLogic;
+
+        public HomeController(IUserContext context)
+        {
+            UserLogic = new Logic.LogicObjects.UserLogic(context);
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -24,7 +32,7 @@ namespace RuneScapeWiki.Controllers
             {
                 try
                 {
-                    userrepo.AuthenticatorUser(user);
+                    UserLogic.AuthenticateUser(user.Username, user.Password);
                     return ToList();
                 }
                 catch (Exception)
