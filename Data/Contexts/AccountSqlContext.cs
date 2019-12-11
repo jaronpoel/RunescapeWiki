@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data.SqlClient;
 using Interfaces.Contexts;
+using Models;
 
 namespace Data.Contexts
 {
     class AccountSqlContext : IAccountContext
     {
-        public void AccountStats(Models.Account account)
+        public void AccountStats(Account account)
         {
             using (SqlConnection conn =
                 new SqlConnection(@"ConnStringHERE"))
