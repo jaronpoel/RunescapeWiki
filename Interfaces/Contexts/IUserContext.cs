@@ -1,4 +1,6 @@
-﻿using Models;
+﻿using Interfaces.Logic;
+using Models;
+
 
 namespace Interfaces.Contexts
 {

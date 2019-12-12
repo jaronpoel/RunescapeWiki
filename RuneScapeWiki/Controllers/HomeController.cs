@@ -32,7 +32,7 @@ namespace RuneScapeWiki.Controllers
             {
                 try
                 {
-                    UserLogic.AuthenticateUser(user.Username, user.Password);
+                    UserLogic.AuthenticatUser(user.Username, user.Password);
                     return ToList();
                 }
                 catch (Exception)
