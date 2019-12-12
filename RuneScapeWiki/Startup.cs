@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Data.Contexts;
+using Interfaces.Contexts;
 
 namespace RuneScapeWiki
 {
@@ -31,8 +33,10 @@ namespace RuneScapeWiki
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddScoped<IAccountContext, AccountSqlContext>();
+            services.AddScoped<IUserContext, UserSqlContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

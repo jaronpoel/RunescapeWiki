@@ -5,6 +5,5 @@ namespace RuneScapeWiki.Models
 {
     public class LoginViewModel
     {
-
     }
 }

@@ -7,26 +7,26 @@ using Models;
 
 namespace Data.Contexts
 {
-    class AccountSqlContext : IAccountContext
+    public class AccountSqlContext : IAccountContext
     {
-        public void AccountStats(Account account)
+
+        public Account UpdateStats(Account account)
         {
             using (SqlConnection conn =
-                new SqlConnection(@"ConnStringHERE"))
+                new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Jaron\source\repos\RunescapeWiki4\Data\RunescapeWiki.mdf"))
             {
                 conn.Open();
-                string query = "UPDATE Account SET Attack = @Attack, Defence = @Defence, Strength = @Strength  WHERE Id=1";
+                string query = "UPDATE Account SET Attack = @Attack, Defence = @Defence, Strength = @Strength WHERE Id=1";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@Attack", account.Attack);
                     cmd.Parameters.AddWithValue("@Defence", account.Defence);
                     cmd.Parameters.AddWithValue("@Strength", account.Strength);
-
                     cmd.ExecuteNonQuery();
                 }
-
                 conn.Close();
             }
+            return (account);
         }
     }
 }
