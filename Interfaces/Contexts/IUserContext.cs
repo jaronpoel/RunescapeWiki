@@ -9,6 +9,6 @@ namespace Interfaces.Contexts
     /// </summary>
     public interface IUserContext : ILogic<User>
     {
-        void AuthenticatUser(string email, string password);
+        User AuthenticatUser(string email, string password);
     }
 }

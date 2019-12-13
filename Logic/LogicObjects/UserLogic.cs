@@ -17,9 +17,9 @@ namespace Logic.LogicObjects
             UserRepository = new UserRepository(context);
         }
 
-        public void AuthenticatUser(string Username, string Password)
+        public User AuthenticatUser(string Username, string Password)
         {
-            UserRepository.AuthenticatUser(Username, Password);
+            return UserRepository.AuthenticatUser(Username, Password);
         }
     }
 }

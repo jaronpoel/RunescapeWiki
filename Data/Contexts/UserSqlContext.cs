@@ -25,35 +25,35 @@ namespace Data.Contexts
         //        }
         //    }
 
-        public void AuthenticatUser(string Username, string Password)
+        public User AuthenticatUser(string username, string password)
         {
-            User user = new User();
-            Username = user.Username;
-            Password = user.Password;
-
             try
             {
-                using (SqlConnection conn =
-                new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Jaron\source\repos\RunescapeWiki4\Data\RunescapeWiki.mdf"))
+                using (SqlConnection conn = DataConnection.GetConnection())
                 {
                     conn.Open();
-                    string query = "Select Count(*) From User Where Username = @Username AND Password = @Password";
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    using (SqlCommand cmd = new SqlCommand("Select Count(*) From Users WHERE [Username] = @Username AND [Password] = @Password", conn))
                     {
-                        cmd.Parameters.AddWithValue("@Username", user.Username);
-                        cmd.Parameters.AddWithValue("@Password", user.Password);
+                        cmd.Parameters.AddWithValue("@Username", username);
+                        cmd.Parameters.AddWithValue("@Password", password);
 
-                        if ((long)cmd.ExecuteScalar() == 1)
+                        if ((int)cmd.ExecuteScalar() == 1)
                         {
-                            SqlCommand command_ = new SqlCommand("SELECT ID, Username FROM User WHERE Username = @Username", conn);
-                            SqlDataReader reader = command_.ExecuteReader();
-                            while (reader.Read())
+                            User user = new User();
+                            SqlCommand command_ = new SqlCommand("SELECT ID, Username, AccountId FROM Users WHERE [Username] = @Username", conn);
+
+                            command_.Parameters.AddWithValue("@Username", username);
+                            using (SqlDataReader reader = command_.ExecuteReader())
                             {
-                                user.Id = (int)reader["ID"];
-                                user.Username = (string)reader["Username"];
+                                while (reader.Read())
+                                {
+                                    user.Id = (int)reader["ID"];
+                                    user.Username = (string)reader["Username"];
+                                    user.AccountId = (int)reader["AccountId"];
+                                }
                             }
+                            return user;
                         }
-                        conn.Close();
                         throw new Exception();
                     }
                 }

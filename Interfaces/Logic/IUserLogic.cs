@@ -8,6 +8,6 @@ namespace Interfaces.Contexts
     /// </summary>
     public interface IUserLogic : ILogic<User>
     {
-        void AuthenticatUser(string Username, string Password);
+        User AuthenticatUser(string Username, string Password);
     }
 }

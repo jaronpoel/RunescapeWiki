@@ -14,9 +14,9 @@ namespace Data.Repositories
             Context = context;
         }
 
-        public void AuthenticatUser(string Username, string Password)
+        public User AuthenticatUser(string Username, string Password)
         {
-            Context.AuthenticatUser(Username, Password);
+            return Context.AuthenticatUser(Username, Password);
         }
 
     }

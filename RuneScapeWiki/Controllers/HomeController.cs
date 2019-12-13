@@ -9,6 +9,7 @@ using Data;
 using Models;
 using Interfaces.Contexts;
 using Interfaces.Logic;
+using Microsoft.AspNetCore.Http;
 
 namespace RuneScapeWiki.Controllers
 {
@@ -26,26 +27,25 @@ namespace RuneScapeWiki.Controllers
             return View();
         }
 
-        public ActionResult UserLogin(User user = null)
+        public IActionResult UserLogin(LoginViewModel user)
         {
-            if (!string.IsNullOrEmpty(user.Username) && !string.IsNullOrEmpty(user.Password))
+            if (ModelState.IsValid)
             {
                 try
                 {
-                    UserLogic.AuthenticatUser(user.Username, user.Password);
-                    return ToList();
+                    User local = UserLogic.AuthenticatUser(user.UserName, user.Password);
+                    HttpContext.Session.SetInt32("id", local.Id);
+                    HttpContext.Session.SetString("username", local.Username);
+                    HttpContext.Session.SetInt32("accountid", local.AccountId);
+                    return RedirectToAction("List", "List");
                 }
                 catch (Exception)
                 {
-                    return View();
+                    ModelState.AddModelError("", "The username or password provided is incorrect");
+                    return RedirectToAction("Index", "Home");
                 }
             }
-            return View();
-        }
-
-        public ActionResult ToList()
-        {
-            return RedirectToAction("List", "List");
+            return RedirectToAction("Index", "Home");
         }
     }
 }

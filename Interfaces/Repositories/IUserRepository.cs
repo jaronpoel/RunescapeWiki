@@ -8,6 +8,6 @@ namespace Interfaces.Repositories
     /// </summary>
     public interface IUserRepository : IRepository<User>
     {
-        void AuthenticatUser(string Username, string Password);
+        User AuthenticatUser(string Username, string Password);
     }
 }
