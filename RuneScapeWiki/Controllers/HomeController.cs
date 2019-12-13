@@ -5,7 +5,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using RuneScapeWiki.Models;
-using Data;
 using Models;
 using Interfaces.Contexts;
 using Interfaces.Logic;

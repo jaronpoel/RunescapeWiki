@@ -8,6 +8,6 @@ namespace Interfaces.Contexts
     /// </summary>
     public interface IAccountLogic : ILogic<Account>
     {
-       
+        Account GetAccountByID(int id);
     }
 }

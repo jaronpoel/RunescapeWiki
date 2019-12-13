@@ -16,5 +16,10 @@ namespace Logic.LogicObjects
         {
             AccountRepository = new AccountRepository(context);
         }
+
+        public Account GetAccountByID(int id)
+        {
+            return AccountRepository.GetAccount(id);
+        }
     }
 }

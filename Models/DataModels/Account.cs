@@ -7,8 +7,9 @@ namespace Models
         public int Id { get; set; }
         public string Kind { get; set; }
         public string Name { get; set; }
-        public string Strength { get; set; }
-        public string Defence { get; set; }
-        public string Attack { get; set; }
+        public int Strength { get; set; }
+        public int Defence { get; set; }
+        public int Attack { get; set; }
+        public int Slayer { get; set; }
     }
 }

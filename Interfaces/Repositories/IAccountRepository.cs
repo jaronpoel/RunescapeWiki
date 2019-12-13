@@ -8,6 +8,6 @@ namespace Interfaces.Repositories
     /// </summary>
     public interface IAccountRepository : IRepository<Account>
     {
-
+        Account GetAccount(int id);
     }
 }

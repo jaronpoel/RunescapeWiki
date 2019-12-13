@@ -11,6 +11,12 @@ namespace Data.Repositories
 
         public AccountRepository(IAccountContext context)
         {
+            Context = context;
+        }
+
+        public Account GetAccount(int id)
+        {
+            return Context.GetAccountByID(id);
         }
     }
 }

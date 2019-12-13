@@ -1,4 +1,6 @@
-﻿
+﻿@using Models;
+@model Models.Account
+
 @{
     ViewBag.Title = "Account";
 }
@@ -20,14 +22,30 @@
     <div class="ContainerContent">
         <div class="BackdropTop"></div>
         <div class="Backdrop">
-            <h1>Account</h1>
-
-            <form method="post" asp-controller="NewAccount" asp-action="NewAccount">
-            <button class="NewAccount" type="submit">New Account</button>
-            </form>
+            <h1>Account: @ViewBag.Account.Name</h1>
+            <table>
+                <tbody>
+                    <tr>
+                        <td><h1>Strength:</h1></td>
+                        <td><h1>@ViewBag.Account.Strength</h1></td>
+                    </tr>
+                    <tr>
+                        <td><h1>Attack:</h1></td>
+                        <td><h1>@ViewBag.Account.Attack</h1></td>
+                    </tr>
+                    <tr>
+                        <td><h1>Defence:</h1></td>
+                        <td><h1>@ViewBag.Account.Defence</h1></td>
+                    </tr>
+                    <tr>
+                        <td><h1>Slayer:</h1></td>
+                        <td><h1>@ViewBag.Account.Slayer</h1></td>
+                    </tr>
+                </tbody>
+            </table>
 
             <form method="post" asp-controller="NewStats" asp-action="NewStats">
-            <button class="NewStats" type="submit">New Stats</button>
+                <button class="NewStats" type="submit">Update Stats</button>
             </form>
         </div>
         <div class="BackdropBot"></div>
