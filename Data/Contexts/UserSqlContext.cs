@@ -47,5 +47,47 @@ namespace Data.Contexts
                 throw new Exception();
             }
         }
+
+        public User GetUserByID(int id)
+        {
+            using (SqlConnection conn = DataConnection.GetConnection())
+            {
+                conn.Open();
+                string query = "Select * From Users WHERE Id=1";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.ExecuteNonQuery();
+                User user = new User();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        user.Id = (int)reader["Id"];
+                        user.Username = (string)reader["Username"];
+                        user.Email = (string)reader["Email"];
+                        user.Password = (string)reader["Password"];
+                       
+                    }
+                }
+                return (user);
+            }
+        }
+
+        public User UpdateUser(User user)
+        {
+            using (SqlConnection conn = DataConnection.GetConnection())
+            {
+                conn.Open();
+                string query = "UPDATE Users SET Email = @Email, Username = @Username, Password = @Password WHERE Id=1";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Email", user.Email);
+                    cmd.Parameters.AddWithValue("@Username", user.Username);
+                    cmd.Parameters.AddWithValue("@Password", user.Password);
+                    cmd.ExecuteNonQuery();
+                }
+                conn.Close();
+            }
+            return (user);
+        }
     }
 }

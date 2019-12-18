@@ -9,5 +9,7 @@ namespace Interfaces.Repositories
     public interface IUserRepository : IRepository<User>
     {
         User AuthenticatUser(string Username, string Password);
+        User UpdateUser(User user);
+        User GetUserByID(int id);
     }
 }

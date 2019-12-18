@@ -23,12 +23,8 @@ namespace RuneScapeWiki.Controllers
 
         public ActionResult UserAccount()
         {
+            ViewBag.User = UserLogic.GetUserByID((int)HttpContext.Session.GetInt32("id"));
             return View();
-        }
-
-        public ActionResult UpdateAccount()
-        {
-            return RedirectToAction("NewAccount", "Account");
         }
     }
 }

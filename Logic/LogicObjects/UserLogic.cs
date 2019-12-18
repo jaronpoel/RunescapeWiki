@@ -21,5 +21,15 @@ namespace Logic.LogicObjects
         {
             return UserRepository.AuthenticatUser(Username, Password);
         }
+
+        public User UpdateUser(User user)
+        {
+            return UserRepository.UpdateUser(user);
+        }
+
+        public User GetUserByID(int id)
+        {
+            return UserRepository.GetUserByID(id);
+        }
     }
 }

@@ -18,5 +18,15 @@ namespace Data.Repositories
         {
             return Context.AuthenticatUser(Username, Password);
         }
+
+        public User UpdateUser(User user)
+        {
+            return Context.UpdateUser(user);
+        }
+
+        public User GetUserByID(int id)
+        {
+            return Context.GetUserByID(id);
+        }
     }
 }
