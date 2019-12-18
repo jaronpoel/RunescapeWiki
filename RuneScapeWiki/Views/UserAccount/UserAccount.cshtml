@@ -23,16 +23,19 @@
     <div class="ContainerContent">
         <div class="BackdropTop"></div>
         <div class="Backdrop">
-            <h1> Update Account:</h1>
+            <h1> Account details:</h1>
             <div class="imgcontainer">
                 <img src="../images/Logo.png" alt="Avatar" class="avatar">
             </div>
 
             <div class="containerInlog">
-                <input class="Inlog" type="text" placeholder="@ViewBag.User.Email" name="uname" required>
-                <input class="Inlog" type="text" placeholder="@ViewBag.User.Username" name="uname" required>
-                <input class="Inlog" type="password" placeholder="@ViewBag.User.Password" name="psw" required>
-                <button type="submit">Update</button>
+                <h1>Email: @ViewBag.User.Email</h1>
+                <h1>Username: @ViewBag.User.Username</h1>
+                <h1>Password: @ViewBag.User.Password</h1>
+
+                <form method="post" asp-controller="UserAccount" asp-action="ToUpdateUserAccount">
+                    <button class="NewStats" type="submit">Update Account</button>
+                </form>
             </div>
         </div>
         <div class="BackdropBot"></div>

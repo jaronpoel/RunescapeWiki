@@ -26,5 +26,34 @@ namespace RuneScapeWiki.Controllers
             ViewBag.User = UserLogic.GetUserByID((int)HttpContext.Session.GetInt32("id"));
             return View();
         }
+
+        public ActionResult UpdateAccount()
+        {
+            ViewBag.User = UserLogic.GetUserByID((int)HttpContext.Session.GetInt32("id"));
+            return View();
+        }
+
+        public ActionResult ToUpdateUserAccount()
+        {
+            return RedirectToAction("UpdateAccount", "UserAccount");
+        }
+
+        public IActionResult UpdateUserAccount(UpdateAccountViewModel updatedUser)
+        {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("UpdateAccount", "UserAccount");
+            }
+
+            User user = new User
+            {
+                Id = (int)HttpContext.Session.GetInt32("id"),
+                Email = updatedUser.Email,
+                Username = updatedUser.UserName,
+                Password = updatedUser.Password
+            };
+            UserLogic.UpdateUser(user);
+            return RedirectToAction("UserAccount", "UserAccount");
+        }
     }
 }

@@ -1,5 +1,5 @@
-﻿@using Models;
-@model Models.User
+﻿@model RuneScapeWiki.Models.UpdateAccountViewModel
+
 
 @{
     ViewBag.Title = "Account";
@@ -28,10 +28,18 @@
             </div>
 
             <div class="containerInlog">
-                <input class="Inlog" type="text" placeholder="Enter new Email" name="uname" required>
-                <input class="Inlog" type="text" placeholder="Enter new Username" name="uname" required>
-                <input class="Inlog" type="password" placeholder="Enter new Password" name="psw" required>
-                <button type="submit">Update</button>
+                <form asp-action="UpdateUserAccount" asp-controller="UserAccount">
+                    <input class="Inlog" type="text" value="@ViewBag.User.Email" asp-for="Email">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+
+                    <input class="Inlog" type="text" value="@ViewBag.User.Username" asp-for="UserName">
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+
+                    <input class="Inlog" type="password" value="@ViewBag.User.Password" asp-for="Password">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+
+                    <button type="submit">Update Account</button>
+                </form>
             </div>
         </div>
         <div class="BackdropBot"></div>

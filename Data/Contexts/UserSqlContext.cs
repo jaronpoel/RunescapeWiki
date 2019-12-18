@@ -74,12 +74,14 @@ namespace Data.Contexts
 
         public User UpdateUser(User user)
         {
+            
             using (SqlConnection conn = DataConnection.GetConnection())
             {
                 conn.Open();
-                string query = "UPDATE Users SET Email = @Email, Username = @Username, Password = @Password WHERE Id=1";
+                string query = "UPDATE Users SET Email = @Email, Username = @Username, Password = @Password WHERE Id=@Id";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
+                    cmd.Parameters.AddWithValue("@Id", user.Id);
                     cmd.Parameters.AddWithValue("@Email", user.Email);
                     cmd.Parameters.AddWithValue("@Username", user.Username);
                     cmd.Parameters.AddWithValue("@Password", user.Password);
