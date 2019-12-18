@@ -1,0 +1,40 @@
+﻿@using Models;
+@model Models.GameAccount
+
+@{
+    ViewBag.Title = "Account";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RunescapeWiki</title>
+</head>
+<body class="BackgroundTekst">
+    <ul>
+        <h1 class="Menu">
+            <li><a @Html.ActionLink("List", "List", "List")</a></li>
+            <li><a class="active" @Html.ActionLink("MyAccount", "UserAccount", "UserAccount")</a></li>
+            <li><a @Html.ActionLink("Stats", "Stats", "Stats")</a></li>
+            <li><a @Html.ActionLink("Monsters", "Monster", "Monster")</a></li>
+        </h1>
+    </ul>
+    <div class="ContainerContent">
+        <div class="BackdropTop"></div>
+        <div class="Backdrop">
+            <h1> Update Account:</h1>
+            <div class="imgcontainer">
+                <img src="../images/Logo.png" alt="Avatar" class="avatar">
+            </div>
+
+            <div class="containerInlog">
+                <input class="Inlog" type="text" placeholder="Enter new Email" name="uname" required>
+                <input class="Inlog" type="text" placeholder="Enter new Username" name="uname" required>
+                <input class="Inlog" type="password" placeholder="Enter new Password" name="psw" required>
+                <button type="submit">Update</button>
+            </div>
+        </div>
+        <div class="BackdropBot"></div>
+    </div>
+</body>
+</html>

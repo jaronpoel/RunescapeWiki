@@ -5,16 +5,16 @@ using Interfaces.Repositories;
 
 namespace Data.Repositories
 {
-    public class AccountRepository : IAccountRepository
+    public class GameAccountRepository : IGameAccountRepository
     {
-        private readonly IAccountContext Context;
+        private readonly IGameAccountContext Context;
 
-        public AccountRepository(IAccountContext context)
+        public GameAccountRepository(IGameAccountContext context)
         {
             Context = context;
         }
 
-        public Account GetAccount(int id)
+        public GameAccount GetAccountByID(int id)
         {
             return Context.GetAccountByID(id);
         }

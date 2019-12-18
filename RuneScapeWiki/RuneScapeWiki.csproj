@@ -14,13 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Views\Registeren\Registeren.cshtml">
+    <Content Update="Views\UserAccount\UpdateAccount.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\NewMonster\NewMonster.cshtml">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
-    <Content Update="Views\NewAccount\NewAccount.cshtml">
+    <Content Update="Views\Home\Registeren.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Views\List\List.cshtml">
@@ -29,13 +26,13 @@
     <Content Update="Views\Monster\Monster.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\NewStats\NewStats.cshtml">
+    <Content Update="Views\Stats\UpdateStats.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Views\Stats\Stats.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\Account\Account.cshtml">
+    <Content Update="Views\UserAccount\UserAccount.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
   </ItemGroup>

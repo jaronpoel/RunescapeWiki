@@ -6,8 +6,8 @@ namespace Interfaces.Repositories
     /// <summary>
     /// Defines functionality for a user context.
     /// </summary>
-    public interface IAccountRepository : IRepository<Account>
+    public interface IGameAccountRepository : IRepository<GameAccount>
     {
-        Account GetAccount(int id);
+        GameAccount GetAccountByID(int id);
     }
 }

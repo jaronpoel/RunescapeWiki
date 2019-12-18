@@ -2,7 +2,7 @@
 
 namespace Models
 {
-    public class Account
+    public class GameAccount
     {
         public int Id { get; set; }
         public string Kind { get; set; }

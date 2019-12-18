@@ -7,10 +7,10 @@ using Models;
 
 namespace Data.Contexts
 {
-    public class AccountSqlContext : IAccountContext
+    public class GameAccountSqlContext : IGameAccountContext
     {
 
-        public Account GetAccountByID(int id)
+        public GameAccount GetAccountByID(int id)
         {
             using (SqlConnection conn = DataConnection.GetConnection())
             {
@@ -18,7 +18,7 @@ namespace Data.Contexts
                 string query = "Select * From Account WHERE Id=1";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.ExecuteNonQuery();
-                Account account = new Account();
+                GameAccount account = new GameAccount();
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -36,7 +36,7 @@ namespace Data.Contexts
             }
         }
 
-        public Account UpdateStats(Account account)
+        public GameAccount UpdateStats(GameAccount account)
         {
             using (SqlConnection conn = DataConnection.GetConnection())
             {

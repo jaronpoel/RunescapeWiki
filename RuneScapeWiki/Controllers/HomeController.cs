@@ -46,5 +46,11 @@ namespace RuneScapeWiki.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+
+        /* Registeren */
+        public ActionResult Registeren()
+        {
+            return View();
+        }
     }
 }

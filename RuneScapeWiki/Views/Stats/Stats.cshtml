@@ -1,6 +1,8 @@
-﻿
+﻿@using Models;
+@model Models.GameAccount
+
 @{
-    ViewBag.Title = "Stat";
+    ViewBag.Title = "Stats";
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -12,15 +14,39 @@
     <ul>
         <h1 class="Menu">
             <li><a @Html.ActionLink("List", "List", "List")</a></li>
-            <li><a @Html.ActionLink("Account", "Account", "Account")</a></li>
-            <li><a class="active" @Html.ActionLink("Stats", "Stats", "Stats")</a></li>
-            <li><a @Html.ActionLink("Monster", "Monster", "Monster")</a></li>
+            <li><a @Html.ActionLink("MyAccount", "UserAccount", "UserAccount")</a></li>
+            <li><a class="active"  @Html.ActionLink("Stats", "Stats", "Stats")</a></li>
+            <li><a @Html.ActionLink("Monsters", "Monster", "Monster")</a></li>
         </h1>
     </ul>
     <div class="ContainerContent">
         <div class="BackdropTop"></div>
         <div class="Backdrop">
-            <h1>Stats</h1>
+            <h1>Account name: @ViewBag.GameAccount.Name</h1>
+            <table>
+                <tbody>
+                    <tr>
+                        <td><h1>Strength:</h1></td>
+                        <td><h1>@ViewBag.GameAccount.Strength</h1></td>
+                    </tr>
+                    <tr>
+                        <td><h1>Attack:</h1></td>
+                        <td><h1>@ViewBag.GameAccount.Attack</h1></td>
+                    </tr>
+                    <tr>
+                        <td><h1>Defence:</h1></td>
+                        <td><h1>@ViewBag.GameAccount.Defence</h1></td>
+                    </tr>
+                    <tr>
+                        <td><h1>Slayer:</h1></td>
+                        <td><h1>@ViewBag.GameAccount.Slayer</h1></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <form method="post" asp-controller="Stats" asp-action="UpdateStats">
+                <button class="NewStats" type="submit">Update Stats</button>
+            </form>
         </div>
         <div class="BackdropBot"></div>
     </div>

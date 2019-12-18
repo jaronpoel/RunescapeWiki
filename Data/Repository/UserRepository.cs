@@ -18,6 +18,5 @@ namespace Data.Repositories
         {
             return Context.AuthenticatUser(Username, Password);
         }
-
     }
 }

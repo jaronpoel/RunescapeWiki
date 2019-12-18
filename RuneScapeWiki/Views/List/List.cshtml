@@ -12,15 +12,15 @@
     <ul>
         <h1 class="Menu">
             <li><a class="active" @Html.ActionLink("List", "List", "List")</a></li>
-            <li><a @Html.ActionLink("Account", "Account", "Account")</a></li>
+            <li><a @Html.ActionLink("MyAccount", "UserAccount", "UserAccount")</a></li>
             <li><a @Html.ActionLink("Stats", "Stats", "Stats")</a></li>
-            <li><a @Html.ActionLink("Monster", "Monster", "Monster")</a></li>
+            <li><a @Html.ActionLink("Monsters", "Monster", "Monster")</a></li>
         </h1>
     </ul>
     <div class="ContainerContent">
         <div class="BackdropTop"></div>
         <div class="Backdrop">
-            <h1>List</h1>
+            <h1>List of Monsters</h1>
             <div class="LeftList">
                 <p class="LeftListText">
                     <h2>Can do:</h2><br />
@@ -31,9 +31,6 @@
                 <h2>Can't do:</h2><br />
                 <li>Monster</li>
             </div>
-            <form method="post" asp-controller="Newmonster" asp-action="Newmonster">
-                <button class="NewMonster" type="submit">New Monster</button>
-            </form>
         </div>
         <div class="BackdropBot"></div>
     </div>

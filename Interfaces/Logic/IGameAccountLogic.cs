@@ -1,14 +1,13 @@
 ﻿using Interfaces.Logic;
 using Models;
 
-
 namespace Interfaces.Contexts
 {
     /// <summary>
     /// Defines functionality for a user context.
     /// </summary>
-    public interface IAccountContext : ILogic<Account>
+    public interface IGameAccountLogic : ILogic<GameAccount>
     {
-        Account GetAccountByID(int id);
+        GameAccount GetAccountByID(int id);
     }
 }
