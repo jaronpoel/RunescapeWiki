@@ -13,5 +13,10 @@ namespace Data.Repositories
         {
             Context = context;
         }
+
+        public Tip GetTipByMonsterID(int id)
+        {
+            return Context.GetTipByMonsterID(id);
+        }
     }
 }

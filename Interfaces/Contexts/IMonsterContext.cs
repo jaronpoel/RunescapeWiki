@@ -9,6 +9,6 @@ namespace Interfaces.Contexts
     /// </summary>
     public interface IMonsterContext : ILogic<Monster>
     {
-      
+        Monster GetMonsterByID(int id);
     }
 }

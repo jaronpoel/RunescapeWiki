@@ -13,5 +13,9 @@ namespace Data.Repositories
         {
             Context = context;
         }
+        public Monster GetMonsterByID(int id)
+        {
+            return Context.GetMonsterByID(id);
+        }
     }
 }

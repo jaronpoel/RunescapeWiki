@@ -36,6 +36,9 @@ namespace RuneScapeWiki
             
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddScoped<IGameAccountContext, GameAccountSqlContext>();
+            services.AddScoped<IMonsterContext, MonsterSqlContext>();
+            services.AddScoped<ITipContext, TipSqlContext>();
+            services.AddScoped<IRequirementContext, RequirementSqlContext>();
             services.AddScoped<IUserContext, UserSqlContext>();
             services.AddSession();
         }

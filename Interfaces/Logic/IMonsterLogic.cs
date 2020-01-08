@@ -8,6 +8,6 @@ namespace Interfaces.Contexts
     /// </summary>
     public interface IMonsterLogic : ILogic<Monster>
     {
-
+        Monster GetMonsterByID(int id);
     }
 }

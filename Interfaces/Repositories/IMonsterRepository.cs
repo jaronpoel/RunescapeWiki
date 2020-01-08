@@ -8,6 +8,6 @@ namespace Interfaces.Repositories
     /// </summary>
     public interface IMonsterRepository : IRepository<Monster>
     {
-       
+        Monster GetMonsterByID(int id);
     }
 }

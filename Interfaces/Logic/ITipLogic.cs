@@ -8,6 +8,6 @@ namespace Interfaces.Contexts
     /// </summary>
     public interface ITipLogic : ILogic<Tip>
     {
-
+        Tip GetTipByMonsterID(int id);
     }
 }

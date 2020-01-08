@@ -8,6 +8,6 @@ namespace Interfaces.Repositories
     /// </summary>
     public interface ITipRepository : IRepository<Tip>
     {
-       
+        Tip GetTipByMonsterID(int id);
     }
 }

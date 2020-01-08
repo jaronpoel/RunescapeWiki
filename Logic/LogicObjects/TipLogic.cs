@@ -1,6 +1,7 @@
 ﻿using Data.Repositories;
 using Interfaces.Contexts;
 using Interfaces.Repositories;
+using Models;
 
 namespace Logic.LogicObjects
 {
@@ -13,5 +14,9 @@ namespace Logic.LogicObjects
             TipRepository = new TipRepository(context);
         }
 
+        public Tip GetTipByMonsterID(int id)
+        {
+            return TipRepository.GetTipByMonsterID(id);
+        }
     }
 }
