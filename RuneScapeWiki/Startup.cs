@@ -38,7 +38,6 @@ namespace RuneScapeWiki
             services.AddScoped<IGameAccountContext, GameAccountSqlContext>();
             services.AddScoped<IMonsterContext, MonsterSqlContext>();
             services.AddScoped<ITipContext, TipSqlContext>();
-            services.AddScoped<IRequirementContext, RequirementSqlContext>();
             services.AddScoped<IUserContext, UserSqlContext>();
             services.AddSession();
         }

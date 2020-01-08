@@ -2,6 +2,7 @@
 using System;
 using Interfaces.Contexts;
 using Interfaces.Repositories;
+using System.Collections.Generic;
 
 namespace Data.Repositories
 {
@@ -13,6 +14,12 @@ namespace Data.Repositories
         {
             Context = context;
         }
+
+        public List<Monster> GetAllMonsters()
+        {
+            return Context.GetAllMonsters();
+        }
+
         public Monster GetMonsterByID(int id)
         {
             return Context.GetMonsterByID(id);

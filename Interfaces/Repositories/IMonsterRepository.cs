@@ -1,5 +1,5 @@
 ﻿using Models;
-
+using System.Collections.Generic;
 
 namespace Interfaces.Repositories
 {
@@ -8,6 +8,7 @@ namespace Interfaces.Repositories
     /// </summary>
     public interface IMonsterRepository : IRepository<Monster>
     {
+        List<Monster> GetAllMonsters();
         Monster GetMonsterByID(int id);
     }
 }

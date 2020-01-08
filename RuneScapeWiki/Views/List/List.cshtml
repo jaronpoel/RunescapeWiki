@@ -1,4 +1,6 @@
-﻿
+﻿@using Models;
+@model RuneScapeWiki.Models.AllMonsterViewModel
+
 @{
     ViewBag.Title = "List";
 }
@@ -24,12 +26,19 @@
             <div class="LeftList">
                 <p class="LeftListText">
                     <h2>Can do:</h2><br />
-                    <li>Monster</li>
+                    @foreach (Monster monster in Model.ListOfMonsters.Where(monster => monster.RequireStat <= ViewBag.GameAccount.Slayer))
+                    {
+                        <li><a class="MonsterHerf">@monster.Name</a></li>
+
+                    }
                 </p>
             </div>
             <div class="RightList">
                 <h2>Can't do:</h2><br />
-                <li>Monster</li>
+                @foreach (Monster monster in Model.ListOfMonsters.Where(monster => monster.RequireStat > ViewBag.GameAccount.Slayer))
+                {
+            <li><a class="MonsterHerf">@monster.Name</a>, required Slayer level: @monster.RequireStat</li>
+                }
             </div>
         </div>
         <div class="BackdropBot"></div>

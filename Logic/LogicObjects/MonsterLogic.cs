@@ -2,6 +2,7 @@
 using Interfaces.Contexts;
 using Interfaces.Repositories;
 using Models;
+using System.Collections.Generic;
 
 namespace Logic.LogicObjects
 {
@@ -12,6 +13,11 @@ namespace Logic.LogicObjects
         public MonsterLogic(IMonsterContext context)
         {
             MonsterRepository = new MonsterRepository(context);
+        }
+
+        public List<Monster> GetAllMonsters()
+        {
+            return MonsterRepository.GetAllMonsters();
         }
 
         public Monster GetMonsterByID(int id)

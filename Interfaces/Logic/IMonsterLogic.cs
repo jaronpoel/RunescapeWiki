@@ -1,5 +1,6 @@
 ﻿using Interfaces.Logic;
 using Models;
+using System.Collections.Generic;
 
 namespace Interfaces.Contexts
 {
@@ -8,6 +9,7 @@ namespace Interfaces.Contexts
     /// </summary>
     public interface IMonsterLogic : ILogic<Monster>
     {
+        List<Monster> GetAllMonsters();
         Monster GetMonsterByID(int id);
     }
 }
