@@ -12,7 +12,6 @@ namespace Data.Contexts
     {
         public List<Monster> GetAllMonsters()
         {
-            List<Monster> Allmonsters = new List<Monster>();
             using (SqlConnection conn = DataConnection.GetConnection())
             {
                 conn.Open();
@@ -21,6 +20,8 @@ namespace Data.Contexts
                 cmd.ExecuteNonQuery();
                 DataTable dt = new DataTable();
                 dt.Load(cmd.ExecuteReader());
+
+                List<Monster> Allmonsters = new List<Monster>();
                 foreach (DataRow dr in dt.Rows)
                 {
                     Monster monster = new Monster();
@@ -34,8 +35,8 @@ namespace Data.Contexts
 
                     Allmonsters.Add(monster);
                 }
+                return (Allmonsters);
             }
-            return (Allmonsters);
         }
 
 

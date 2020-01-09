@@ -28,7 +28,7 @@
                     <h2>Can do:</h2><br />
                     @foreach (Monster monster in Model.ListOfMonsters.Where(monster => monster.RequireStat <= ViewBag.GameAccount.Slayer))
                     {
-                        <li><a class="MonsterHerf">@monster.Name</a></li>
+                        <li>@monster.Name</li>
 
                     }
                 </p>
@@ -37,7 +37,7 @@
                 <h2>Can't do:</h2><br />
                 @foreach (Monster monster in Model.ListOfMonsters.Where(monster => monster.RequireStat > ViewBag.GameAccount.Slayer))
                 {
-            <li><a class="MonsterHerf">@monster.Name</a>, required Slayer level: @monster.RequireStat</li>
+            <li>@monster.Name, required Slayer level: @monster.RequireStat</li>
                 }
             </div>
         </div>
