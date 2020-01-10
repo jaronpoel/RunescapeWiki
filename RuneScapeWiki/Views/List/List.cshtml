@@ -13,10 +13,10 @@
 <body class="BackgroundTekst">
     <ul>
         <h1 class="Menu">
-            <li><a class="active" @Html.ActionLink("List", "List", "List")</a></li>
-            <li><a @Html.ActionLink("MyAccount", "UserAccount", "UserAccount")</a></li>
-            <li><a @Html.ActionLink("Stats", "Stats", "Stats")</a></li>
-            <li><a @Html.ActionLink("Monsters", "Monster", "Monster")</a></li>
+            <li><a class="active" asp-action="List" asp-controller="List">List</a></li>
+            <li><a asp-action="UserAccount" asp-controller="UserAccount">My account</a></li>
+            <li><a asp-action="Stats" asp-controller="Stats">Stats</a></li>
+            <li><a asp-action="Monster" asp-controller="Monster">Monster</a></li>
         </h1>
     </ul>
     <div class="ContainerContent">
@@ -28,7 +28,7 @@
                     <h2>Can do:</h2><br />
                     @foreach (Monster monster in Model.ListOfMonsters.Where(monster => monster.RequireStat <= ViewBag.GameAccount.Slayer))
                     {
-                        <li>@monster.Name</li>
+                        <li class=@monster.Id><a class="ListMonsters" asp-action="Monster" asp-controller="Monster">@monster.Name</a></li>
 
                     }
                 </p>
@@ -37,7 +37,7 @@
                 <h2>Can't do:</h2><br />
                 @foreach (Monster monster in Model.ListOfMonsters.Where(monster => monster.RequireStat > ViewBag.GameAccount.Slayer))
                 {
-            <li>@monster.Name, required Slayer level: @monster.RequireStat</li>
+                    <li class=@monster.Id><a class="ListMonsters" asp-action="Monster" asp-controller="Monster">@monster.Name, required Slayer level: @monster.RequireStat</a></li>
                 }
             </div>
         </div>

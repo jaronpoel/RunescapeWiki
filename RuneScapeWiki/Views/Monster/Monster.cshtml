@@ -13,10 +13,10 @@
 <body class="BackgroundTekst">
     <ul>
         <h1 class="Menu">
-            <li><a @Html.ActionLink("List", "List", "List")</a></li>
-            <li><a @Html.ActionLink("MyAccount", "UserAccount", "UserAccount")</a></li>
-            <li><a @Html.ActionLink("Stats", "Stats", "Stats")</a></li>
-            <li><a class="active" @Html.ActionLink("Monsters", "Monster", "Monster")</a></li>
+            <li><a asp-action="List" asp-controller="List">List</a></li>
+            <li><a asp-action="UserAccount" asp-controller="UserAccount">My account</a></li>
+            <li><a asp-action="Stats" asp-controller="Stats">Stats</a></li>
+            <li><a class="active" asp-action="Monster" asp-controller="Monster">Monster</a></li>
         </h1>
     </ul>
     <div class="ContainerContent">
