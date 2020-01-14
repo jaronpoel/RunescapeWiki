@@ -21,5 +21,10 @@ namespace Logic.LogicObjects
         {
             return AccountRepository.GetAccountByID(id);
         }
+
+        public GameAccount UpdateStats(GameAccount account)
+        {
+            return AccountRepository.UpdateStats(account);
+        }
     }
 }

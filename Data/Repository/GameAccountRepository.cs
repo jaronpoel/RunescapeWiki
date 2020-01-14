@@ -18,5 +18,10 @@ namespace Data.Repositories
         {
             return Context.GetAccountByID(id);
         }
+
+        public GameAccount UpdateStats(GameAccount account)
+        {
+            return Context.UpdateStats(account);
+        }
     }
 }

@@ -9,5 +9,6 @@ namespace Interfaces.Repositories
     public interface IGameAccountRepository : IRepository<GameAccount>
     {
         GameAccount GetAccountByID(int id);
+        GameAccount UpdateStats(GameAccount account);
     }
 }

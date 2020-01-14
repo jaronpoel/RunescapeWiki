@@ -10,5 +10,6 @@ namespace Interfaces.Contexts
     public interface IGameAccountContext : ILogic<GameAccount>
     {
         GameAccount GetAccountByID(int id);
+        GameAccount UpdateStats(GameAccount account);
     }
 }

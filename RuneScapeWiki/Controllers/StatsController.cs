@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Interfaces.Contexts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Models;
 using RuneScapeWiki.Models;
 
 namespace RuneScapeWiki.Controllers
@@ -27,8 +28,9 @@ namespace RuneScapeWiki.Controllers
 
         /*Update stats */
 
-        public ActionResult UpdateStats()
+        public ActionResult UpdateStats(GameAccount account)
         {
+            AccountLogic.UpdateStats(account);
             return View();
         }
 
