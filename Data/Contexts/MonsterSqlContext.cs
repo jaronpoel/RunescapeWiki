@@ -44,11 +44,12 @@ namespace Data.Contexts
         {
             using (SqlConnection conn = DataConnection.GetConnection())
             {
-                conn.Open();
-                string query = "Select * From Monster WHERE Id=1";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.ExecuteNonQuery();
                 Monster monster = new Monster();
+                conn.Open();
+                string query = "Select * From Monster WHERE id = @id";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())

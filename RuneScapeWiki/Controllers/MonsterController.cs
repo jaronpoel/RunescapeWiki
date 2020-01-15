@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Interfaces.Contexts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Models;
 using RuneScapeWiki.Models;
 
 namespace RuneScapeWiki.Controllers
@@ -21,9 +22,9 @@ namespace RuneScapeWiki.Controllers
             TipLogic = new Logic.LogicObjects.TipLogic(context2);
         }
 
-        public ActionResult Monster()
+        public ActionResult Monster(int id)
         {
-            ViewBag.Monster = MonsterLogic.GetMonsterByID((int)HttpContext.Session.GetInt32("id"));
+            ViewBag.Monster = MonsterLogic.GetMonsterByID(id);
             ViewBag.Tip = TipLogic.GetTipByMonsterID((int)HttpContext.Session.GetInt32("id"));
             return View();
         }

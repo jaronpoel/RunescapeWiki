@@ -12,12 +12,11 @@
 </head>
 <body class="BackgroundTekst">
     <ul>
-        <h1 class="Menu">
-            <li><a class="active" asp-action="List" asp-controller="List">List</a></li>
-            <li><a asp-action="UserAccount" asp-controller="UserAccount">My account</a></li>
-            <li><a asp-action="Stats" asp-controller="Stats">Stats</a></li>
-            <li><a asp-action="Monster" asp-controller="Monster">Monster</a></li>
-        </h1>
+        <h1 class="Menu"></h1>
+            <li><h1><a class="active" asp-action="List" asp-controller="List">List</a></h1></li>
+            <li><h1><a asp-action="UserAccount" asp-controller="UserAccount">My account</a></h1></li>
+            <li><h1><a asp-action="Stats" asp-controller="Stats">Stats</a></h1></li>
+            <li><h1><a asp-action="Monster" asp-controller="Monster">Monster</a></h1></li>
     </ul>
     <div class="ContainerContent">
         <div class="BackdropTop"></div>
@@ -26,19 +25,23 @@
             <div class="LeftList">
                 <p class="LeftListText">
                     <h2>Can do:</h2><br />
-                    @foreach (Monster monster in Model.ListOfMonsters.Where(monster => monster.RequireStat <= ViewBag.GameAccount.Slayer))
-                    {
-                        <li class=@monster.Id><a class="ListMonsters" asp-action="Monster" asp-controller="Monster">@monster.Name</a></li>
+                    <ul>
+                        @foreach (Monster monster in Model.ListOfMonsters.Where(monster => monster.RequireStat <= ViewBag.GameAccount.Slayer))
+                        {
+                            <li><a class="ListMonsters" asp-action="Monster" asp-controller="Monster" asp-route-id="@monster.Id">@monster.Name</a></li>
 
-                    }
+                        }
+                    </ul>
                 </p>
             </div>
             <div class="RightList">
                 <h2>Can't do:</h2><br />
-                @foreach (Monster monster in Model.ListOfMonsters.Where(monster => monster.RequireStat > ViewBag.GameAccount.Slayer))
-                {
-                    <li class=@monster.Id><a class="ListMonsters" asp-action="Monster" asp-controller="Monster">@monster.Name, required Slayer level: @monster.RequireStat</a></li>
-                }
+                <ul>
+                    @foreach (Monster monster in Model.ListOfMonsters.Where(monster => monster.RequireStat > ViewBag.GameAccount.Slayer))
+                    {
+                        <li><a class="ListMonsters" asp-action="Monster" asp-controller="Monster" asp-route-id="@monster.Id">@monster.Name, required Slayer level: @monster.RequireStat</a></li>
+                    }
+                </ul>
             </div>
         </div>
         <div class="BackdropBot"></div>
