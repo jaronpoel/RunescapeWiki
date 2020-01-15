@@ -15,8 +15,9 @@ namespace Data.Contexts
             using (SqlConnection conn = DataConnection.GetConnection())
             {
                 conn.Open();
-                string query = "Select * From Tip Where MonsterId = 1";
+                string query = "Select * From Tip";
                 SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@MonsterId", id);
                 cmd.ExecuteNonQuery();
                 Tip tip = new Tip();
                 using (SqlDataReader reader = cmd.ExecuteReader())

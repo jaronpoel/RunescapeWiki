@@ -25,7 +25,7 @@ namespace RuneScapeWiki.Controllers
         public ActionResult Monster(int id)
         {
             ViewBag.Monster = MonsterLogic.GetMonsterByID(id);
-            ViewBag.Tip = TipLogic.GetTipByMonsterID((int)HttpContext.Session.GetInt32("id"));
+            ViewBag.Tip = TipLogic.GetTipByMonsterID(id);
             return View();
         }
     }
