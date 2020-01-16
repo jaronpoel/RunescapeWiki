@@ -50,26 +50,33 @@ namespace Data.Contexts
 
         public User GetUserByID(int id)
         {
-            using (SqlConnection conn = DataConnection.GetConnection())
+            try
             {
-                conn.Open();
-                string query = "Select * From Users WHERE Id=id";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@Id", id);
-                cmd.ExecuteNonQuery();
-                User user = new User();
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                using (SqlConnection conn = DataConnection.GetConnection())
                 {
-                    while (reader.Read())
+                    conn.Open();
+                    string query = "Select * From Users WHERE Id=id";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    cmd.ExecuteNonQuery();
+                    User user = new User();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        user.Id = (int)reader["Id"];
-                        user.Username = (string)reader["Username"];
-                        user.Email = (string)reader["Email"];
-                        user.Password = (string)reader["Password"];
+                        while (reader.Read())
+                        {
+                            user.Id = (int)reader["Id"];
+                            user.Username = (string)reader["Username"];
+                            user.Email = (string)reader["Email"];
+                            user.Password = (string)reader["Password"];
                        
+                        }
                     }
+                    return (user);
                 }
-                return (user);
+            }
+            catch
+            {
+                throw new Exception();
             }
         }
 
@@ -91,6 +98,22 @@ namespace Data.Contexts
                 conn.Close();
             }
             return (user);
+        }
+
+        public void Insert(User user)
+        {
+            using (SqlConnection conn = DataConnection.GetConnection())
+            {
+                conn.Open();
+                string query = "INSERT INTO Users(Email, Username, Password) VALUES (@Email, @Username, @Password)";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Email", user.Email);
+                    cmd.Parameters.AddWithValue("@Username", user.Username);
+                    cmd.Parameters.AddWithValue("@Password", user.Password);
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

@@ -17,7 +17,7 @@
     <Content Update="Views\UserAccount\UpdateAccount.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\Home\Registeren.cshtml">
+    <Content Update="Views\Home\Register.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Views\List\List.cshtml">

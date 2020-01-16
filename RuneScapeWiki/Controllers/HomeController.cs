@@ -48,7 +48,7 @@ namespace RuneScapeWiki.Controllers
         }
 
         /* Registeren */
-        public ActionResult Registeren()
+        public ActionResult Register()
         {
             return View();
         }
