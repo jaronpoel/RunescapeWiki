@@ -29,5 +29,9 @@ namespace Data.Repositories
         {
             return Context.GetUserByID(id);
         }
+        public void InsertUser(User user)
+        {
+            Context.InsertUser(user);
+        }
     }
 }

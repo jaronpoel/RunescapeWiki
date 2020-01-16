@@ -100,7 +100,7 @@ namespace Data.Contexts
             return (user);
         }
 
-        public void Insert(User user)
+        public void InsertUser(User user)
         {
             using (SqlConnection conn = DataConnection.GetConnection())
             {

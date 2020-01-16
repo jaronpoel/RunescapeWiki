@@ -31,5 +31,10 @@ namespace Logic.LogicObjects
         {
             return UserRepository.GetUserByID(id);
         }
+
+        public void InsertUser(User user)
+        {
+            UserRepository.InsertUser(user);
+        }
     }
 }

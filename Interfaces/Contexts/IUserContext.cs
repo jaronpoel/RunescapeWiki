@@ -12,5 +12,6 @@ namespace Interfaces.Contexts
         User AuthenticatUser(string Username, string Password);
         User UpdateUser(User user);
         User GetUserByID(int id);
+        void InsertUser(User user);
     }
 }

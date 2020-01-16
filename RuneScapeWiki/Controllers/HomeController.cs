@@ -52,5 +52,29 @@ namespace RuneScapeWiki.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult SignUp(RegisterViewModel user)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    UserLogic.InsertUser(new User
+                    {
+                        Email = user.Email,
+                        Username = user.Username,
+                        Password = user.Password
+                    });
+                    return RedirectToAction("Index", "Home");
+                }
+                catch (Exception)
+                {
+                    return View();
+                }
+            }
+            return View();
+        }
     }
 }
