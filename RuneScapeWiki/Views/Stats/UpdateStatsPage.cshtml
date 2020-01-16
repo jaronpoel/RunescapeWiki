@@ -22,13 +22,13 @@
         <div class="Backdrop">
             <h1>Change Stats</h1>
             <div class="StatsInput">
-                <form asp-action="UpdateStats" asp-controller="Stats">
+                <form asp-action="UpdateAccountStats" asp-controller="Stats">
                     <input type="text" name="Agilty" placeholder="Agilty">
                     <input type="text" name="Construction" placeholder="Construction">
-                    <input type="text" name="Attack" placeholder="Attack" value="@Model.Attack">
+                    <input type="text" name="Attack" placeholder="Attack" value="@ViewBag.GameAccount.Attack">
                     <input type="text" name="Cooking" placeholder="Cooking">
                     <input type="text" name="Crafting" placeholder="Crafting">
-                    <input type="text" name="Defence" placeholder="Defence" value="@Model.Defence">
+                    <input type="text" name="Defence" placeholder="Defence" value="@ViewBag.GameAccount.Defence">
                     <input type="text" name="Farming" placeholder="Farming">
                     <input type="text" name="Firemaking" placeholder="Firemaking">
                     <input type="text" name="Fishing" placeholder="Fishing">
@@ -41,9 +41,9 @@
                     <input type="text" name="Prayer" placeholder="Prayer">
                     <input type="text" name="Ranged" placeholder="Ranged">
                     <input type="text" name="Runecrafting" placeholder="Runecrafting">
-                    <input type="text" name="Slayer" placeholder="Slayer" value="@Model.Slayer">
+                    <input type="text" name="Slayer" placeholder="Slayer" value="@ViewBag.GameAccount.Slayer">
                     <input type="text" name="Smithing" placeholder="Smithing">
-                    <input type="text" name="Strenght" placeholder="Strenght" value="@Model.Strength">
+                    <input type="text" name="Strength" placeholder="Strength" value="@ViewBag.GameAccount.Strength">
                     <input type="text" name="Thieving" placeholder="Thieving">
                     <input type="text" name="Woodcutting" placeholder="Woodcutting">
                     <button class="CreateStats" type="submit">Submit</button>

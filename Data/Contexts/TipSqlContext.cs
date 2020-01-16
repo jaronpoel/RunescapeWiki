@@ -15,7 +15,6 @@ namespace Data.Contexts
             using (SqlConnection conn = DataConnection.GetConnection())
             {
                 conn.Open();
-                //Haalt de goede tip nog niet op.
                 string query = "Select * From Tip WHERE Monsterid = @MonsterId";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@MonsterId", id);

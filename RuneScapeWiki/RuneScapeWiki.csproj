@@ -26,7 +26,7 @@
     <Content Update="Views\Monster\Monster.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\Stats\UpdateStats.cshtml">
+    <Content Update="Views\Stats\UpdateStatsPage.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Views\Stats\Stats.cshtml">

@@ -28,12 +28,29 @@ namespace RuneScapeWiki.Controllers
 
         /*Update stats */
 
-        public ActionResult UpdateStats(GameAccount account)
+        public ActionResult UpdateStatsPage()
         {
-            AccountLogic.UpdateStats(account);
+            ViewBag.GameAccount = AccountLogic.GetAccountByID((int)HttpContext.Session.GetInt32("id"));
             return View();
         }
 
+        public ActionResult UpdateAccountStats(UpdateGameAccountViewModel updatedAccount)
+        {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("UpdateStatsPage", "Stats");
+            }
 
+            GameAccount account = new GameAccount
+            {
+                Id = (int)HttpContext.Session.GetInt32("id"),
+                Attack = updatedAccount.Attack,
+                Defence = updatedAccount.Defence,
+                Strength = updatedAccount.Strength,
+                Slayer = updatedAccount.Slayer
+            };
+            AccountLogic.UpdateStats(account);
+            return RedirectToAction("Stats", "Stats");
+        }
     }
 }

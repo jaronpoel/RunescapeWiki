@@ -15,8 +15,9 @@ namespace Data.Contexts
             using (SqlConnection conn = DataConnection.GetConnection())
             {
                 conn.Open();
-                string query = "Select * From Account WHERE Id=1";
+                string query = "Select * From Account WHERE Id=id";
                 SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Id", id);
                 cmd.ExecuteNonQuery();
                 GameAccount account = new GameAccount();
                 using (SqlDataReader reader = cmd.ExecuteReader())
@@ -26,7 +27,7 @@ namespace Data.Contexts
                         account.Id = (int)reader["Id"];
                         account.Name = (string)reader["Name"];
                         account.Kind = (string)reader["Kind"];
-                        account.Strength = (int)reader["Strenght"];
+                        account.Strength = (int)reader["Strength"];
                         account.Attack = (int)reader["Attack"];
                         account.Defence = (int)reader["Defence"];
                         account.Slayer = (int)reader["Slayer"];
@@ -41,8 +42,10 @@ namespace Data.Contexts
             using (SqlConnection conn = DataConnection.GetConnection())
             {
                 conn.Open();
-                string query = "UPDATE Account SET Attack = @Attack, Defence = @Defence, Strength = @Strength WHERE Id=1";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                string query = "UPDATE Account SET Attack = @Attack, Defence = @Defence, Strength = @Strength, Slayer = @Slayer WHERE Id=id";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Id", account.Id);
+                using (cmd)
                 {
                     cmd.Parameters.AddWithValue("@Attack", account.Attack);
                     cmd.Parameters.AddWithValue("@Defence", account.Defence);
