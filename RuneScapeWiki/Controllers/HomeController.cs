@@ -54,7 +54,6 @@ namespace RuneScapeWiki.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult SignUp(RegisterViewModel user)
         {
             if (ModelState.IsValid)

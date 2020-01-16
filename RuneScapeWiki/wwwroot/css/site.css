@@ -109,6 +109,10 @@ ul {
     box-sizing: border-box;
 }
 
+.NewAccountButton {
+    margin-top: 5px;
+}
+
 /* Input fields */
 input[type=password] {
     
@@ -126,7 +130,6 @@ button {
     padding: 14px 20px;
     border: none;
     cursor: pointer;
-    width: 51%;
 }
 
     button:hover {
