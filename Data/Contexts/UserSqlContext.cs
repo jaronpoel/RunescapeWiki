@@ -53,8 +53,9 @@ namespace Data.Contexts
             using (SqlConnection conn = DataConnection.GetConnection())
             {
                 conn.Open();
-                string query = "Select * From Users WHERE Id=1";
+                string query = "Select * From Users WHERE Id=id";
                 SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Id", id);
                 cmd.ExecuteNonQuery();
                 User user = new User();
                 using (SqlDataReader reader = cmd.ExecuteReader())
