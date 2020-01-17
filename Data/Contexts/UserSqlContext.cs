@@ -4,6 +4,7 @@ using System.Text;
 using System.Data.SqlClient;
 using Interfaces.Contexts;
 using Models;
+using Exceptions.User;
 
 namespace Data.Contexts
 {
@@ -23,10 +24,10 @@ namespace Data.Contexts
 
                         if ((int)cmd.ExecuteScalar() == 1)
                         {
-                            User user = new User();
                             SqlCommand command_ = new SqlCommand("SELECT ID, Username FROM Users WHERE [Username] = @Username", conn);
 
                             command_.Parameters.AddWithValue("@Username", username);
+                            User user = new User();
                             using (SqlDataReader reader = command_.ExecuteReader())
                             {
                                 while (reader.Read())
@@ -37,13 +38,13 @@ namespace Data.Contexts
                             }
                             return user;
                         }
-                        throw new Exception("The username or password provided is incorrect");
+                        throw new AuthenticationFailedException("The username or password provided is incorrect");
                     }
                 }
             }
-            catch(SqlException x)
+            catch(SqlException)
             {
-                throw new Exception(x.Message);
+                throw new AuthenticationFailedException("An unexpected error occured.");
             }
         }
 
@@ -55,22 +56,24 @@ namespace Data.Contexts
                 {
                     conn.Open();
                     string query = "Select * From Users WHERE Id = @Id";
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@Id", id);
-                    cmd.ExecuteNonQuery();
-                    User user = new User();
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        while (reader.Read())
+                        cmd.Parameters.AddWithValue("@Id", id);
+                        cmd.ExecuteNonQuery();
+                        User user = new User();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            user.Id = (int)reader["Id"];
-                            user.Username = (string)reader["Username"];
-                            user.Email = (string)reader["Email"];
-                            user.Password = (string)reader["Password"];
-                       
+                            while (reader.Read())
+                            {
+                                user.Id = (int)reader["Id"];
+                                user.Username = (string)reader["Username"];
+                                user.Email = (string)reader["Email"];
+                                user.Password = (string)reader["Password"];
+
+                            }
                         }
+                        return (user);
                     }
-                    return (user);
                 }
             }
             catch
@@ -115,11 +118,10 @@ namespace Data.Contexts
                     }
                 }
             }
-            catch(SqlException x)
+            catch (SqlException)
             {
-                throw new Exception(x.Message);
+                throw new RegistrationFailedException("An unexpected error occured.");
             }
-            
         }
     }
 }

@@ -36,7 +36,6 @@ namespace Data.Contexts
                 return (account);
             }
         }
-
         public GameAccount UpdateStats(GameAccount account)
         {
             using (SqlConnection conn = DataConnection.GetConnection())

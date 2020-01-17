@@ -16,21 +16,23 @@ namespace Data.Contexts
             {
                 conn.Open();
                 string query = "Select * From Tip WHERE Monsterid = @MonsterId";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@MonsterId", id);
-                cmd.ExecuteNonQuery();
-                Tip tip = new Tip();
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    while (reader.Read())
+                    cmd.Parameters.AddWithValue("@MonsterId", id);
+                    cmd.ExecuteNonQuery();
+                    Tip tip = new Tip();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        tip.Id = (int)reader["Id"];
-                        tip.Name = (string)reader["Name"];
-                        tip.Description = (string)reader["Description"];
-                        tip.Monsterid = (int)reader["MonsterId"];
+                        while (reader.Read())
+                        {
+                            tip.Id = (int)reader["Id"];
+                            tip.Name = (string)reader["Name"];
+                            tip.Description = (string)reader["Description"];
+                            tip.Monsterid = (int)reader["MonsterId"];
+                        }
                     }
+                    return (tip);
                 }
-                return (tip);
             }
         }
     }

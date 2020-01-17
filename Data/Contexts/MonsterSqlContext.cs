@@ -16,29 +16,30 @@ namespace Data.Contexts
             {
                 conn.Open();
                 string query = "Select * FROM Monster";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.ExecuteNonQuery();
-                DataTable dt = new DataTable();
-                dt.Load(cmd.ExecuteReader());
-
-                List<Monster> Allmonsters = new List<Monster>();
-                foreach (DataRow dr in dt.Rows)
+                using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    Monster monster = new Monster();
+                    cmd.ExecuteNonQuery();
+                    DataTable dt = new DataTable();
+                    dt.Load(cmd.ExecuteReader());
 
-                    int.TryParse(dr[0].ToString(), out int id);
-                    monster.Id = id;
-                    monster.Name = dr[1].ToString();
-                    monster.Description = dr[2].ToString();
-                    int.TryParse(dr[3].ToString(), out int stat);
-                    monster.RequireStat = stat;
+                    List<Monster> Allmonsters = new List<Monster>();
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        Monster monster = new Monster();
 
-                    Allmonsters.Add(monster);
+                        int.TryParse(dr[0].ToString(), out int id);
+                        monster.Id = id;
+                        monster.Name = dr[1].ToString();
+                        monster.Description = dr[2].ToString();
+                        int.TryParse(dr[3].ToString(), out int stat);
+                        monster.RequireStat = stat;
+
+                        Allmonsters.Add(monster);
+                    }
+                    return (Allmonsters);
                 }
-                return (Allmonsters);
             }
         }
-
 
         public Monster GetMonsterByID(int id)
         {
@@ -47,16 +48,18 @@ namespace Data.Contexts
                 Monster monster = new Monster();
                 conn.Open();
                 string query = "Select * From Monster WHERE id = @id";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@id", id);
-                cmd.ExecuteNonQuery();
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    while (reader.Read())
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.ExecuteNonQuery();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        monster.Id = (int)reader["Id"];
-                        monster.Name = (string)reader["Name"];
-                        monster.Description = (string)reader["Description"];
+                        while (reader.Read())
+                        {
+                            monster.Id = (int)reader["Id"];
+                            monster.Name = (string)reader["Name"];
+                            monster.Description = (string)reader["Description"];
+                        }
                     }
                 }
                 return (monster);
