@@ -37,13 +37,13 @@ namespace Data.Contexts
                             }
                             return user;
                         }
-                        throw new Exception();
+                        throw new Exception("The username or password provided is incorrect");
                     }
                 }
             }
-            catch
+            catch(SqlException x)
             {
-                throw new Exception();
+                throw new Exception(x.Message);
             }
         }
 
@@ -101,18 +101,25 @@ namespace Data.Contexts
 
         public void InsertUser(User user)
         {
-            using (SqlConnection conn = DataConnection.GetConnection())
-            {
-                conn.Open();
-                string query = "INSERT INTO Users(Email, Username, Password) VALUES (@Email, @Username, @Password) ";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+            try{
+                using (SqlConnection conn = DataConnection.GetConnection())
                 {
-                    cmd.Parameters.AddWithValue("@Email", user.Email);
-                    cmd.Parameters.AddWithValue("@Username", user.Username);
-                    cmd.Parameters.AddWithValue("@Password", user.Password);
-                    cmd.ExecuteNonQuery();
+                    conn.Open();
+                    string query = "IF NOT EXISTS (Select 1 from [Users] WHERE Email = @Email) INSERT INTO Users(Email, Username, Password) VALUES (@Email, @Username, @Password) ELSE Throw 50011, 'Email is already in use.', 1";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Email", user.Email);
+                        cmd.Parameters.AddWithValue("@Username", user.Username);
+                        cmd.Parameters.AddWithValue("@Password", user.Password);
+                        cmd.ExecuteNonQuery();
+                    }
                 }
             }
+            catch(SqlException x)
+            {
+                throw new Exception(x.Message);
+            }
+            
         }
     }
 }

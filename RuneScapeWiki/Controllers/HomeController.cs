@@ -37,9 +37,9 @@ namespace RuneScapeWiki.Controllers
                     HttpContext.Session.SetString("username", local.Username);
                     return RedirectToAction("List", "List");
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    ModelState.AddModelError("", "The username or password provided is incorrect");
+                    ModelState.AddModelError("", ex.Message);
                     return RedirectToAction("Index", "Home");
                 }
             }
@@ -67,8 +67,9 @@ namespace RuneScapeWiki.Controllers
                     });
                     return RedirectToAction("Index", "Home");
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    ModelState.AddModelError("", ex.Message);
                     return RedirectToAction("Register", "Home");
                 }
             }
