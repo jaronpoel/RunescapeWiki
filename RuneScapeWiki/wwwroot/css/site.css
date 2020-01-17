@@ -198,9 +198,11 @@ input {
     width: 32%;
 }
 /* Monster */
+
 .LeftMonster {
     float: left;
     width: 45%;
+    padding-left: 30px;
 }
 
 .LeftMonster {
@@ -212,7 +214,7 @@ input {
 }
 
 .RightMonster {
-    margin-left: 50%;
+    margin-left: 55%;
 }
 
 .monsterImg {
@@ -235,6 +237,7 @@ input {
     width: 45%;
     padding-left: 30px;
 }
+
 .RightList {
     float: right;
     width: 45%;
