@@ -1,11 +1,14 @@
 using System;
 using Xunit;
+using Models;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTests
 {
-    public class UnitTest1
+    public class UnitTesten
     {
         [Fact]
+        [TestMethod]
         public void Test1()
         {
 

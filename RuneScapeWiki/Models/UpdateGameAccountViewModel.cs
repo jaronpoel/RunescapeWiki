@@ -10,6 +10,10 @@ namespace RuneScapeWiki.Models
     {
         [Required]
         [DataType(DataType.Text)]
+        public string Name { get; set; }
+
+        [Required]
+        [DataType(DataType.Text)]
         public int Attack { get; set; }
 
         [Required]

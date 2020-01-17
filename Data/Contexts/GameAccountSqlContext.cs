@@ -15,7 +15,7 @@ namespace Data.Contexts
             using (SqlConnection conn = DataConnection.GetConnection())
             {
                 conn.Open();
-                string query = "Select * From Account WHERE Id=id";
+                string query = "Select * From Account WHERE Id=@Id";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Id", id);
                 cmd.ExecuteNonQuery();
@@ -42,11 +42,12 @@ namespace Data.Contexts
             using (SqlConnection conn = DataConnection.GetConnection())
             {
                 conn.Open();
-                string query = "UPDATE Account SET Attack = @Attack, Defence = @Defence, Strength = @Strength, Slayer = @Slayer WHERE Id=id";
+                string query = "UPDATE Account SET Name = @Name, Attack = @Attack, Defence = @Defence, Strength = @Strength, Slayer = @Slayer WHERE Id = @Id";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Id", account.Id);
                 using (cmd)
                 {
+                    cmd.Parameters.AddWithValue("@Name", account.Name);
                     cmd.Parameters.AddWithValue("@Attack", account.Attack);
                     cmd.Parameters.AddWithValue("@Defence", account.Defence);
                     cmd.Parameters.AddWithValue("@Strength", account.Strength);

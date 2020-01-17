@@ -7,7 +7,10 @@ namespace Data
 {
     public class DataConnection
     {
-        private static readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Jaron\Desktop\S2 herstart\Project\RunescapeWiki\Data\RuneScape.mdf";
+        //School
+        private static readonly string connectionString = "Server=mssql.fhict.local;Database=dbi392219;User Id = dbi392219; Password=masu1996";
+        //Local
+        //private static readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Jaron\Desktop\S2 herstart\Project\RunescapeWiki\Data\RuneScape.mdf";
         public static SqlConnection GetConnection()
         {
             return new SqlConnection(connectionString);

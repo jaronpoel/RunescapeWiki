@@ -35,7 +35,6 @@ namespace RuneScapeWiki.Controllers
                     User local = UserLogic.AuthenticatUser(user.UserName, user.Password);
                     HttpContext.Session.SetInt32("id", local.Id);
                     HttpContext.Session.SetString("username", local.Username);
-                    HttpContext.Session.SetInt32("accountid", local.AccountId);
                     return RedirectToAction("List", "List");
                 }
                 catch (Exception)
@@ -70,10 +69,10 @@ namespace RuneScapeWiki.Controllers
                 }
                 catch (Exception)
                 {
-                    return View();
+                    return RedirectToAction("Register", "Home");
                 }
             }
-            return View();
+            return RedirectToAction("Register", "Home");
         }
     }
 }

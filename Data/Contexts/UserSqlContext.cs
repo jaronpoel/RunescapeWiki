@@ -24,7 +24,7 @@ namespace Data.Contexts
                         if ((int)cmd.ExecuteScalar() == 1)
                         {
                             User user = new User();
-                            SqlCommand command_ = new SqlCommand("SELECT ID, Username, AccountId FROM Users WHERE [Username] = @Username", conn);
+                            SqlCommand command_ = new SqlCommand("SELECT ID, Username FROM Users WHERE [Username] = @Username", conn);
 
                             command_.Parameters.AddWithValue("@Username", username);
                             using (SqlDataReader reader = command_.ExecuteReader())
@@ -33,7 +33,6 @@ namespace Data.Contexts
                                 {
                                     user.Id = (int)reader["ID"];
                                     user.Username = (string)reader["Username"];
-                                    user.AccountId = (int)reader["AccountId"];
                                 }
                             }
                             return user;
@@ -55,7 +54,7 @@ namespace Data.Contexts
                 using (SqlConnection conn = DataConnection.GetConnection())
                 {
                     conn.Open();
-                    string query = "Select * From Users WHERE Id=id";
+                    string query = "Select * From Users WHERE Id = @Id";
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@Id", id);
                     cmd.ExecuteNonQuery();
@@ -105,7 +104,7 @@ namespace Data.Contexts
             using (SqlConnection conn = DataConnection.GetConnection())
             {
                 conn.Open();
-                string query = "INSERT INTO Users(Email, Username, Password) VALUES (@Email, @Username, @Password)";
+                string query = "INSERT INTO Users(Email, Username, Password) VALUES (@Email, @Username, @Password) ";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@Email", user.Email);

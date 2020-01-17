@@ -44,6 +44,7 @@ namespace RuneScapeWiki.Controllers
             GameAccount account = new GameAccount
             {
                 Id = (int)HttpContext.Session.GetInt32("id"),
+                Name = updatedAccount.Name,
                 Attack = updatedAccount.Attack,
                 Defence = updatedAccount.Defence,
                 Strength = updatedAccount.Strength,
